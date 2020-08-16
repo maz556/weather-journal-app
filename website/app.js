@@ -12,7 +12,7 @@ const D_GEN = new Date();
 const apiKey = "6a29019e7f04bb4a789466b841b44814"
 
 function getWeatherURL() {
-    return `https://api.openweathermap.org/data/2.5/weather?zip=${ZIP.value},us&appid=${apiKey}`
+    return `https://api.openweathermap.org/data/2.5/weather?units=imperial&zip=${ZIP.value},us&appid=${apiKey}`
 }
 
 // Event listener to add function to existing HTML DOM element
@@ -43,7 +43,7 @@ async function getTemp() {
         // console.log(getWeatherURL())
         const resp = await fetch(getWeatherURL());
         const data = await resp.json();
-        return data.main.temp;
+        return `${data.main.temp}˚F`;
     } catch(err) {
         console.log(err)
     }
